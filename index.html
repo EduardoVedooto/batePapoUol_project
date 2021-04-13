@@ -13,7 +13,7 @@
 <body>
     <header>
         <img src="./images/logo.png" alt="Logo Bate Papo Uol">
-        <ion-icon name="people"></ion-icon>
+        <ion-icon name="people" class="toggle" onclick="toggleSidebar()"></ion-icon>
     </header>
 
     <div class="login hidden">
@@ -26,25 +26,87 @@
     </div>
 
     <main>
-        <div class="chat notification">
-            <span class="time">(09:21:45)</span>  <span class="name">João</span>  entra na sala...
-        </div>
-        <div class="chat">
-            <span class="time">(09:22:28)</span>  <span class="name">João</span> para <span class="name">Todos</span>:  Bom dia
-        </div>
-        <div class="chat">
-            <span class="time">(09:22:38)</span>  <span class="name">Maria</span> para João:  Oi João :)
-        </div>
-        <div class="chat private">
-            <span class="time">(09:22:48)</span> <span class="name">João</span> reservadamente para <span class="name">Maria</span>:  Oi gatinha quer tc?
-        </div>
-        <div class="chat notification">
-            <span class="time">(09:22:58)</span>  <span class="name">Maria</span>  sai da sala...
-        </div>
+        <ul>
+            <li class="chat notification">
+                <span class="time">(09:21:45)</span>  <span class="name">João</span>  entra na sala...
+            </li>
+            <li class="chat">
+                <span class="time">(09:22:28)</span>  <span class="name">João</span> para <span class="name">Todos</span>:  Bom dia
+            </li>
+            <li class="chat">
+                <span class="time">(09:22:38)</span>  <span class="name">Maria</span> para João:  Oi João :)
+            </li>
+            <li class="chat private">
+                <span class="time">(09:22:48)</span> <span class="name">João</span> reservadamente para <span class="name">Maria</span>:  Oi gatinha quer tc?
+            </li>
+            <li class="chat notification">
+                <span class="time">(09:22:58)</span>  <span class="name">Maria</span>  sai da sala...
+            </li>
+            <li class="chat notification">
+                <span class="time">(09:21:45)</span>  <span class="name">João</span>  entra na sala...
+            </li>
+            <li class="chat">
+                <span class="time">(09:22:28)</span>  <span class="name">João</span> para <span class="name">Todos</span>:  Bom dia
+            </li>
+            <li class="chat">
+                <span class="time">(09:22:38)</span>  <span class="name">Maria</span> para João:  Oi João :)
+            </li>
+            <li class="chat private">
+                <span class="time">(09:22:48)</span> <span class="name">João</span> reservadamente para <span class="name">Maria</span>:  Oi gatinha quer tc?
+            </li>
+            <li class="chat notification">
+                <span class="time">(09:22:58)</span>  <span class="name">Maria</span>  sai da sala...
+            </li>
+            <li class="chat notification">
+                <span class="time">(09:21:45)</span>  <span class="name">João</span>  entra na sala...
+            </li>
+            <li class="chat">
+                <span class="time">(09:22:28)</span>  <span class="name">João</span> para <span class="name">Todos</span>:  Bom dia
+            </li>
+            <li class="chat">
+                <span class="time">(09:22:38)</span>  <span class="name">Maria</span> para João:  Oi João :)
+            </li>
+            <li class="chat private">
+                <span class="time">(09:22:48)</span> <span class="name">João</span> reservadamente para <span class="name">Maria</span>:  Oi gatinha quer tc?
+            </li>
+            <li class="chat notification">
+                <span class="time">(09:22:58)</span>  <span class="name">Maria</span>  sai da sala...
+            </li>
+            <li class="chat notification">
+                <span class="time">(09:21:45)</span>  <span class="name">João</span>  entra na sala...
+            </li>
+            <li class="chat">
+                <span class="time">(09:22:28)</span>  <span class="name">João</span> para <span class="name">Todos</span>:  Bom dia
+            </li>
+            <li class="chat">
+                <span class="time">(09:22:38)</span>  <span class="name">Maria</span> para João:  Oi João :)
+            </li>
+            <li class="chat private">
+                <span class="time">(09:22:48)</span> <span class="name">João</span> reservadamente para <span class="name">Maria</span>:  Oi gatinha quer tc?
+            </li>
+            <li class="chat notification">
+                <span class="time">(09:22:58)</span>  <span class="name">Maria</span>  sai da sala...
+            </li>
+            <li class="chat notification">
+                <span class="time">(09:21:45)</span>  <span class="name">João</span>  entra na sala...
+            </li>
+            <li class="chat">
+                <span class="time">(09:22:28)</span>  <span class="name">João</span> para <span class="name">Todos</span>:  Bom dia
+            </li>
+            <li class="chat">
+                <span class="time">(09:22:38)</span>  <span class="name">Maria</span> para João:  Oi João :)
+            </li>
+            <li class="chat private">
+                <span class="time">(09:22:48)</span> <span class="name">João</span> reservadamente para <span class="name">Maria</span>:  Oi gatinha quer tc?
+            </li>
+            <li class="chat notification">
+                <span class="time">(09:22:58)</span>  <span class="name">Maria</span>  sai da sala...
+            </li>
+        </ul>
     </main>
 
-    <nav class="hidden">
-        <div class="sidebar">
+    <nav onclick="toggleSidebar()">
+        <div class="sidebar" onclick="toggleSidebar()">
             <h1>Escolha um contato para enviar mensagem:</h1>
             <ul class="profiles">
                 <li>
@@ -65,14 +127,16 @@
             <div>
                 <ion-icon name="lock-closed"></ion-icon>reservadamente
             </div>
+            <ion-icon name="arrow-forward-circle" class="toggle" onclick="toggleSidebar()"></ion-icon>
         </div>
-        
     </nav>
 
     <footer>
          <input type="text" placeholder="Escreva aqui...">
          <ion-icon name="paper-plane-outline"></ion-icon>
     </footer>
+
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="./scripts/script.js"></script>
 </body>
 </html>

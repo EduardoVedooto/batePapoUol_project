@@ -1,6 +1,8 @@
 body {
     background-color: #F3F3F3;
     font-family: "Roboto";
+    height: 100vh;
+    
 }
 
 header {
@@ -16,6 +18,7 @@ header {
     left: 0;
     z-index: 1;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    
 }
 
 header img {
@@ -91,8 +94,14 @@ div.login div button:focus {
 }
 
 main {
-    margin-top: 92px;
+    padding-top: 80px;
     height: 100%;
+}
+
+main ul {
+    
+    overflow-y: scroll;
+    height: calc(100vh - 160px);
 }
 
 main .chat {
@@ -119,22 +128,40 @@ main .chat span.name {
     font-weight: bold ;
 }
 
+
 nav {
     width: 100%;
     position: fixed;
     top: 0;
-    left: 0;
-    background-color: rgba(0,0,0,.6);
+    left: 100vw;
+    background-color: rgba(0,0,0,0);
     z-index: 2;
     display: flex;
     flex-direction: row-reverse;
+    transition: background-color 0.7s cubic-bezier(0.11, 0, 0.5, 0), left 0.3s cubic-bezier(0.5, 1, 0.89, 1);
+    
 }
 
 nav .sidebar {
     width: 75%;
     height: 100vh;
-
+    position: relative;
     background-color: #FFF;
+}
+
+nav .sidebar ion-icon.toggle {
+    font-size: 48px;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    color: #000;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+    border-radius: 50%;
+    width: 44px;
+}
+
+nav .sidebar.slide_sidebar {
+
 }
 
 nav .sidebar h1, h2 {
@@ -162,6 +189,11 @@ nav .sidebar div {
 nav .sidebar ul li ion-icon, nav .sidebar div ion-icon {
     font-size: 24px;
     margin-right: 8px;
+}
+
+nav.display_sidebar {
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
 }
 
 footer {
@@ -203,3 +235,4 @@ footer ion-icon {
 .hidden {
     display: none;
 }
+
