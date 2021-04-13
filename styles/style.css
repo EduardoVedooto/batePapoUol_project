@@ -56,6 +56,51 @@ main .chat span.name {
     font-weight: bold ;
 }
 
+nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.6);
+    z-index: 2;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+nav .sidebar {
+    width: 75%;
+    height: 100vh;
+
+    background-color: #FFF;
+}
+
+nav .sidebar h1, h2 {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 28px 50px;
+    line-height: 18.75px;
+    text-align: center;
+}
+
+nav .sidebar ul {
+    padding: 0 16px;
+}
+
+nav .sidebar ul li, nav .sidebar div {
+    height: 36px;
+    display: flex;
+    align-items: center;
+}
+
+nav .sidebar div {
+    padding: 0 16px;
+}
+
+nav .sidebar ul li ion-icon, nav .sidebar div ion-icon {
+    font-size: 24px;
+    margin-right: 8px;
+}
+
 footer {
     height: 80px;
     width: 100%;
