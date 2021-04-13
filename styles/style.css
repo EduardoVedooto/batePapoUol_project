@@ -27,6 +27,69 @@ header ion-icon {
     font-size: 40px;
 }
 
+.login {
+    width: 100%;
+    height: 100vh;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+div.login img {
+    margin: 75px 0;
+    width: 130px;
+    height: 92px;
+}
+
+div.login div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+div.login div input {
+    width: 80%;
+    height: 54px;
+    border: 1px solid #D7D7D7;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+    padding-left: 10px;
+}
+
+div.login div input::placeholder {
+    color: #AEAEAE;
+}
+
+div.login div input:focus {
+    text-align: start;
+    outline: none;
+}
+
+div.login div input:focus::placeholder {
+    color: #FFF;
+}
+
+div.login div button {
+    border: none;
+    background-color: #E7E7E7;
+    color: #696969;
+    width: 25%;
+    min-width: 100px;
+    height: 45px;
+    border-radius: 4px;
+}
+
+div.login div button:focus {
+    outline: none;
+}
+
 main {
     margin-top: 92px;
     height: 100%;
@@ -120,6 +183,7 @@ footer input {
     width: 100%;
     border: none;
     font-size: 18px;
+    padding-left: 17px;
 }
 
 footer input:focus {
@@ -127,7 +191,6 @@ footer input:focus {
 }
 
 footer input::placeholder {
-    padding-left: 17px;
     color: #000;
     font-style: italic;
 }
@@ -135,4 +198,8 @@ footer input::placeholder {
 footer ion-icon {
     margin: 0 18px;
     font-size: 32px;
+}
+
+.hidden {
+    display: none;
 }
