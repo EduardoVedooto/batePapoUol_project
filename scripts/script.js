@@ -19,7 +19,9 @@ function login() {
 
 function enterChat() {
     getMessages();
+    getParticipants();
     setInterval(getMessages, 3000);
+    setInterval(getParticipants, 5000);
     const screen = document.querySelector(".login");
     screen.classList.add("hidden");
     setInterval(status, 5000);
@@ -64,20 +66,20 @@ function updateScreen(response) {
                 <li class="chat notification">
                     <span class="time">${message[i].time}</span>  <span class="name">${message[i].from}</span> ${message[i].text}
                 </li>
-            `
+            `;
         }
         else if(message[i].type === "message"){
             ul.innerHTML += `
                 <li class="chat">
                     <span class="time">${message[i].time}</span>  <span class="name">${message[i].from}</span> para <span class="name">${message[i].to}</span>: ${message[i].text}
                 </li>
-            `
+            `;
         } else {
             ul.innerHTML += `
                 <li class="chat private">
                     <span class="time">${message[i].time}</span> <span class="name">${message[i].from}</span> reservadamente para <span class="name">${message[i].to}</span>:  ${message[i].text}
                 </li>
-            `
+            `;
         }
         
     }
@@ -92,14 +94,35 @@ function sendMessage() {
         type: "message"
     }
     const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages", request);
-    promisse.then(sent);
     promisse.catch(messageSentError);
 }
 
-function sent() {
-    alert("mensagem enviada");
-}
 
 function messageSentError(error) {
     alert(error.respone.code);
+}
+
+function getParticipants() {
+    const promisse = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants");
+    promisse.then(updateParticipants);
+}
+
+function updateParticipants(response) {
+    const participants = response.data;
+    const ul = document.querySelector("ul.participants");
+    ul.innerHTML = `
+        <li class="selected" onclick="selectPerson()">
+            <ion-icon name="people"></ion-icon><span>Todos</span>
+        </li>
+    `;
+    
+    for (let i = 0; i < participants.length; i++) {
+        ul.innerHTML += `
+            <li onclick="selectPerson()">
+                <ion-icon name="person-circle"></ion-icon><span>${participants[i].name}</span>
+            </li>
+        `;
+
+        
+    }
 }
