@@ -82,3 +82,24 @@ function updateScreen(response) {
         
     }
 }
+
+function sendMessage() {
+    const inputText = document.querySelector("footer input").value;
+    const request = {
+        from: username,
+        to: "Todos",
+        text: inputText,
+        type: "message"
+    }
+    const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages", request);
+    promisse.then(sent);
+    promisse.catch(messageSentError);
+}
+
+function sent() {
+    alert("mensagem enviada");
+}
+
+function messageSentError(error) {
+    alert(error.respone.code);
+}

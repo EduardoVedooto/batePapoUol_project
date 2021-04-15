@@ -242,6 +242,7 @@ footer input::placeholder {
 footer ion-icon {
     margin: 0 18px;
     font-size: 32px;
+    cursor: pointer;
 }
 
 .hidden {
