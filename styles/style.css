@@ -172,10 +172,6 @@ nav .sidebar ion-icon.toggle {
     width: 44px;
 }
 
-nav .sidebar.slide_sidebar {
-
-}
-
 nav .sidebar h1, h2 {
     font-size: 16px;
     font-weight: bold;
@@ -184,7 +180,7 @@ nav .sidebar h1, h2 {
     text-align: center;
 }
 
-nav .sidebar ul {
+nav .sidebar ul li {
     padding: 0 16px;
 }
 
@@ -192,6 +188,12 @@ nav .sidebar ul li, nav .sidebar div {
     height: 36px;
     display: flex;
     align-items: center;
+    transition: background-color .2s;
+    cursor: pointer;
+}
+
+nav .sidebar ul li:hover, nav .sidebar div:hover {
+    background-color: #d1d1d1;
 }
 
 nav .sidebar div {
@@ -200,7 +202,14 @@ nav .sidebar div {
 
 nav .sidebar ul li ion-icon, nav .sidebar div ion-icon {
     font-size: 24px;
-    margin-right: 8px;
+    margin: 0 8px;
+}
+
+nav .sidebar ul li ion-icon.checkmark,
+nav .sidebar div ion-icon.checkmark {
+    color: green;
+    margin-left: auto;
+    font-size: 28px;
 }
 
 nav.display_sidebar {

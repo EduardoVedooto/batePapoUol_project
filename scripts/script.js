@@ -105,24 +105,32 @@ function messageSentError(error) {
 function getParticipants() {
     const promisse = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants");
     promisse.then(updateParticipants);
+    
 }
 
 function updateParticipants(response) {
     const participants = response.data;
+    
     const ul = document.querySelector("ul.participants");
     ul.innerHTML = `
-        <li class="selected" onclick="selectPerson()">
+        <li class="selected" onclick="selectPerson(this)">
             <ion-icon name="people"></ion-icon><span>Todos</span>
+            <ion-icon class="checkmark" name="checkmark-sharp"></ion-icon>
         </li>
     `;
     
     for (let i = 0; i < participants.length; i++) {
         ul.innerHTML += `
-            <li onclick="selectPerson()">
+            <li onclick="selectPerson(this)">
                 <ion-icon name="person-circle"></ion-icon><span>${participants[i].name}</span>
             </li>
         `;
 
-        
     }
+}
+
+function selectPerson(li) {
+    const previousLi = document.querySelector(".selected");
+    previousLi.classList.remove("selected");
+    li.classList.add("selected");
 }
