@@ -16,92 +16,16 @@
         <ion-icon name="people" class="toggle" onclick="toggleSidebar()"></ion-icon>
     </header>
 
-    <div class="login hidden">
-        <img src="./images/logo.png" alt="Logo Bate Papo Uol">
+    <div class="login">
+        <img src="./images/login_logo.png" alt="Logo Bate Papo Uol">
         <div>
             <input type="text" placeholder="Digite seu nome">
-            <button>Entrar</button>
+            <button onclick="login()">Entrar</button>
         </div>
-        
     </div>
 
     <main>
         <ul>
-            <li class="chat notification">
-                <span class="time">(09:21:45)</span>  <span class="name">João</span>  entra na sala...
-            </li>
-            <li class="chat">
-                <span class="time">(09:22:28)</span>  <span class="name">João</span> para <span class="name">Todos</span>:  Bom dia
-            </li>
-            <li class="chat">
-                <span class="time">(09:22:38)</span>  <span class="name">Maria</span> para João:  Oi João :)
-            </li>
-            <li class="chat private">
-                <span class="time">(09:22:48)</span> <span class="name">João</span> reservadamente para <span class="name">Maria</span>:  Oi gatinha quer tc?
-            </li>
-            <li class="chat notification">
-                <span class="time">(09:22:58)</span>  <span class="name">Maria</span>  sai da sala...
-            </li>
-            <li class="chat notification">
-                <span class="time">(09:21:45)</span>  <span class="name">João</span>  entra na sala...
-            </li>
-            <li class="chat">
-                <span class="time">(09:22:28)</span>  <span class="name">João</span> para <span class="name">Todos</span>:  Bom dia
-            </li>
-            <li class="chat">
-                <span class="time">(09:22:38)</span>  <span class="name">Maria</span> para João:  Oi João :)
-            </li>
-            <li class="chat private">
-                <span class="time">(09:22:48)</span> <span class="name">João</span> reservadamente para <span class="name">Maria</span>:  Oi gatinha quer tc?
-            </li>
-            <li class="chat notification">
-                <span class="time">(09:22:58)</span>  <span class="name">Maria</span>  sai da sala...
-            </li>
-            <li class="chat notification">
-                <span class="time">(09:21:45)</span>  <span class="name">João</span>  entra na sala...
-            </li>
-            <li class="chat">
-                <span class="time">(09:22:28)</span>  <span class="name">João</span> para <span class="name">Todos</span>:  Bom dia
-            </li>
-            <li class="chat">
-                <span class="time">(09:22:38)</span>  <span class="name">Maria</span> para João:  Oi João :)
-            </li>
-            <li class="chat private">
-                <span class="time">(09:22:48)</span> <span class="name">João</span> reservadamente para <span class="name">Maria</span>:  Oi gatinha quer tc?
-            </li>
-            <li class="chat notification">
-                <span class="time">(09:22:58)</span>  <span class="name">Maria</span>  sai da sala...
-            </li>
-            <li class="chat notification">
-                <span class="time">(09:21:45)</span>  <span class="name">João</span>  entra na sala...
-            </li>
-            <li class="chat">
-                <span class="time">(09:22:28)</span>  <span class="name">João</span> para <span class="name">Todos</span>:  Bom dia
-            </li>
-            <li class="chat">
-                <span class="time">(09:22:38)</span>  <span class="name">Maria</span> para João:  Oi João :)
-            </li>
-            <li class="chat private">
-                <span class="time">(09:22:48)</span> <span class="name">João</span> reservadamente para <span class="name">Maria</span>:  Oi gatinha quer tc?
-            </li>
-            <li class="chat notification">
-                <span class="time">(09:22:58)</span>  <span class="name">Maria</span>  sai da sala...
-            </li>
-            <li class="chat notification">
-                <span class="time">(09:21:45)</span>  <span class="name">João</span>  entra na sala...
-            </li>
-            <li class="chat">
-                <span class="time">(09:22:28)</span>  <span class="name">João</span> para <span class="name">Todos</span>:  Bom dia
-            </li>
-            <li class="chat">
-                <span class="time">(09:22:38)</span>  <span class="name">Maria</span> para João:  Oi João :)
-            </li>
-            <li class="chat private">
-                <span class="time">(09:22:48)</span> <span class="name">João</span> reservadamente para <span class="name">Maria</span>:  Oi gatinha quer tc?
-            </li>
-            <li class="chat notification">
-                <span class="time">(09:22:58)</span>  <span class="name">Maria</span>  sai da sala...
-            </li>
         </ul>
     </main>
 
@@ -136,6 +60,7 @@
          <ion-icon name="paper-plane-outline"></ion-icon>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="./scripts/script.js"></script>
 </body>

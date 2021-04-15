@@ -18,7 +18,6 @@ header {
     left: 0;
     z-index: 1;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    
 }
 
 header img {
@@ -37,6 +36,7 @@ header ion-icon {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
     position: fixed;
     top: 0;
     left: 0;
@@ -44,7 +44,7 @@ header ion-icon {
 }
 
 div.login img {
-    margin: 75px 0;
+    
     width: 130px;
     height: 92px;
 }
@@ -54,6 +54,7 @@ div.login div {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    padding-bottom: 200px;
 }
 
 div.login div input {
@@ -62,12 +63,14 @@ div.login div input {
     border: 1px solid #D7D7D7;
     border-radius: 4px;
     margin-bottom: 15px;
-    text-align: center;
-    padding-left: 10px;
+    
+    padding: 0 8px;
+    
 }
 
 div.login div input::placeholder {
     color: #AEAEAE;
+    
 }
 
 div.login div input:focus {
@@ -93,13 +96,22 @@ div.login div button:focus {
     outline: none;
 }
 
+div.login .image {
+    width: 100%;
+    background-color: #696969;
+}
+
+div.login .image>img {
+    height: 150px;
+    width: 150px;
+}
+
 main {
     padding-top: 80px;
     height: 100%;
 }
 
 main ul {
-    
     overflow-y: scroll;
     height: calc(100vh - 160px);
 }
