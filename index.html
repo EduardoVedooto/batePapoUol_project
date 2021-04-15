@@ -35,12 +35,13 @@
             <ul class="participants">
             </ul>
             <h2>Escolha a visibilidade</h2>
-            <div>
+            <div onclick="selectVisibility(this)" class="selected" >
                 <ion-icon name="lock-open"></ion-icon>Público
                 <ion-icon class="checkmark" name="checkmark-sharp"></ion-icon>
             </div>
-            <div>
+            <div onclick="selectVisibility(this)">
                 <ion-icon name="lock-closed"></ion-icon>reservadamente
+                <ion-icon class="checkmark" name="checkmark-sharp"></ion-icon>
             </div>
             <ion-icon name="arrow-forward-circle" class="toggle" onclick="toggleSidebar()"></ion-icon>
         </div>
@@ -48,6 +49,7 @@
 
     <footer>
          <input type="text" placeholder="Escreva aqui...">
+         <label></label>
          <ion-icon onclick="sendMessage()" name="paper-plane-outline"></ion-icon>
     </footer>
 

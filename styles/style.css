@@ -63,7 +63,6 @@ div.login div input {
     border: 1px solid #D7D7D7;
     border-radius: 4px;
     margin-bottom: 15px;
-    
     padding: 0 8px;
     
 }
@@ -180,8 +179,24 @@ nav .sidebar h1, h2 {
     text-align: center;
 }
 
+nav .sidebar ul {
+    max-height: 305px;
+    overflow-y: scroll;
+}
+
 nav .sidebar ul li {
     padding: 0 16px;
+}
+
+nav .sidebar ul li.selected ion-icon:last-child,
+nav .sidebar div.selected ion-icon:last-child {
+    opacity: 1;
+    transition: opacity .5s;
+}
+
+nav .sidebar ul li ion-icon:last-child,
+nav .sidebar div ion-icon:last-child {
+    opacity: 0;
 }
 
 nav .sidebar ul li, nav .sidebar div {
@@ -212,7 +227,7 @@ nav .sidebar div ion-icon.checkmark {
     font-size: 28px;
 }
 
-nav.display_sidebar {
+nav.display-sidebar {
     left: 0;
     background-color: rgba(0,0,0,0.6);
 }
@@ -237,6 +252,7 @@ footer input {
     border: none;
     font-size: 18px;
     padding-left: 17px;
+    transition: padding .3s;
 }
 
 footer input:focus {
@@ -246,6 +262,24 @@ footer input:focus {
 footer input::placeholder {
     color: #000;
     font-style: italic;
+}
+
+footer input.up {
+    padding-bottom: 14px;
+}
+
+footer label {
+    position: fixed;
+    bottom: 15px;
+    left: 17px;
+    opacity: 0;
+    font-weight: 300;
+    font-size: 14px;
+    transition: opacity .3s;
+}
+
+footer label.display {
+    opacity: 1;
 }
 
 footer ion-icon {
@@ -258,3 +292,17 @@ footer ion-icon {
     display: none;
 }
 
+
+
+@media(max-height: 639px) {
+    nav .sidebar ul {
+        max-height: 130px;
+        overflow-y: scroll;
+    }
+}
+
+@media(max-width: 300px) {
+    nav .sidebar {
+        width: 100%;
+    }
+}
