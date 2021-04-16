@@ -1,16 +1,26 @@
 let username = "";
 let to = "Todos"; // Variável que guardará o nome do perfil que desejo enviar a mensagem;
 let type = "message";
+document.querySelector("footer input").addEventListener("keypress", function (e) {
+    if(e.key === "Enter")
+        sendMessage();
+});
 
 function toggleSidebar() {
     let sidebar = document.querySelector("nav");
     sidebar.classList.toggle("display-sidebar");
     sidebar = document.querySelector("nav .sidebar");
     sidebar.classList.toggle("slide-sidebar");
+    sidebar = document.querySelector("nav .sidebar ion-icon.toggle");
+    sidebar.classList.toggle("hidden");
 }
 
 function login() {
     username = document.querySelector(".login input").value
+    let div = document.querySelector(".login div");  // Div que possui o input e o button como filhos
+    div.classList.add("hidden");
+    div = document.querySelector(".login div.loading");
+    div.classList.remove("hidden");
     const request = { name: username};
     const response = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/participants", request);
     
@@ -23,7 +33,7 @@ function enterChat() {
     getMessages();
     getParticipants();
     setInterval(getMessages, 3000);
-    setInterval(getParticipants, 5000);
+    setInterval(getParticipants, 10000);
     const screen = document.querySelector(".login");
     screen.classList.add("hidden");
     setInterval(status, 5000);
@@ -38,10 +48,20 @@ function serverError() {
         img.setAttribute("src", "images/login_logo.png");
     }, 3000);
     const input = document.querySelector(".login input");
-    input.value = "";
-    setTimeout(() => {
-        alert("Usuário já existente");
-    }, 100);
+    if(input.value === ""){
+        setTimeout(() => {
+            alert("Nome do usuário não pode estar vazio. Por favor, tente novamente!");
+        }, 100);
+    } else {
+        input.value = "";
+        setTimeout(() => {
+            alert("Usuário já existente ou ");
+        }, 100);
+    }
+    let div = document.querySelector(".login div");  // Div que possui o input e o button como filhos
+    div.classList.remove("hidden");
+    div = document.querySelector(".login div.loading");
+    div.classList.add("hidden");
 }
 
 function status() {
@@ -112,8 +132,11 @@ function sendMessage() {
 }
 
 
-function messageSentError() {
-    window.location.reload();
+function messageSentError(error) {
+    if(error.response.status === 400)
+        alert("Bad request (400) - Não é possível mandar mensagem sem texto!");
+    else
+        alert(error.response.statusText + " - " + error.resposne.status);
 }
 
 function getParticipants() {
@@ -126,7 +149,6 @@ function updateParticipants(response) {
     const participants = response.data;
     
     const ul = document.querySelector("ul.participants");
-    console.log(ul.children);
 
     if(to !== "Todos"){
         ul.innerHTML = `
@@ -146,7 +168,7 @@ function updateParticipants(response) {
 
     
     updateTo(participants);
-    console.log(to);
+    
     for (let i = 0; i < participants.length; i++) {
         if(participants[i].name === to) {
             ul.innerHTML += `
@@ -172,8 +194,6 @@ function selectProfile(li) {
     previousLi.classList.remove("selected");
     li.classList.add("selected");
     to = li.children[1].innerHTML;
-    
-    
     showLabel();
 }
 
@@ -182,7 +202,6 @@ function selectVisibility(div) {
     const previousDiv = document.querySelector("div.selected");
     previousDiv.classList.remove("selected");
     div.classList.add("selected");
-    console.log(to);
     showLabel();
     updateType();
 }
@@ -213,7 +232,6 @@ function updateType() {
     } else {
         type = "message";
     }
-    console.log(type);
 }
 
 function updateTo(participants) {
@@ -223,3 +241,4 @@ function updateTo(participants) {
     to = "Todos";
     showLabel();
 }
+

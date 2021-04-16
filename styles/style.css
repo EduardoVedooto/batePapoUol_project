@@ -57,6 +57,10 @@ div.login div {
     padding-bottom: 200px;
 }
 
+div.login div.hidden {
+    display: none;
+}
+
 div.login div input {
     width: 80%;
     height: 54px;
@@ -98,12 +102,36 @@ div.login div button:focus {
 
 div.login .image {
     width: 100%;
-    background-color: #696969;
 }
 
 div.login .image>img {
     height: 150px;
     width: 150px;
+}
+
+div.login .loading .loader {
+    width: 100px;
+    height: 100px;
+    border: 16px solid #FFF;
+    border-radius: 50%;
+    border-top: 16px solid #FFCE1C;
+    border-bottom: 16px solid #913220;
+    animation: spin 2s linear infinite;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+div.login .loading.hidden {
+    display: none;
 }
 
 main {
@@ -122,6 +150,7 @@ main .chat {
     padding: 8px;
     background-color: #FFF;
     border-radius: 2px;
+    word-break: break-all;
 }
 
 main .chat.notification {
@@ -159,17 +188,26 @@ nav .sidebar {
     height: 100vh;
     position: relative;
     background-color: #FFF;
+    overflow-y: scroll;
+    padding-bottom: 65px;
 }
 
 nav .sidebar ion-icon.toggle {
     font-size: 48px;
-    position: absolute;
-    left: 20px;
-    bottom: 20px;
-    color: #000;
+    position: fixed;
+    left: 8%;
+    bottom: 2%;
+    color: #FFF;
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
     border-radius: 50%;
     width: 44px;
+    transition: left 0.5s cubic-bezier(0.5, 1, 0.89, 1), color 0.6s cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+nav .sidebar ion-icon.toggle.hidden {
+    display: block;
+    color: #000;
+    left: 100%;
 }
 
 nav .sidebar h1, h2 {
@@ -181,12 +219,13 @@ nav .sidebar h1, h2 {
 }
 
 nav .sidebar ul {
-    max-height: 305px;
+    max-height: 650px;
     overflow-y: scroll;
 }
 
 nav .sidebar ul li {
     padding: 0 16px;
+    word-break: break-all;
 }
 
 nav .sidebar ul li.selected ion-icon:last-child,
@@ -295,9 +334,10 @@ footer ion-icon {
 
 
 
+
 @media(max-height: 639px) {
     nav .sidebar ul {
-        max-height: 130px;
+        max-height: 200px;
         overflow-y: scroll;
     }
 }
@@ -305,5 +345,9 @@ footer ion-icon {
 @media(max-width: 300px) {
     nav .sidebar {
         width: 100%;
+    }
+    nav .sidebar ion-icon.toggle {
+        left: 4%;
+        color: #000;
     }
 }
