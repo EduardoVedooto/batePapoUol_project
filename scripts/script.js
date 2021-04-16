@@ -47,10 +47,16 @@ function serverError() {
 function status() {
     const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/status", {name: username})
     promisse.then(statusOK);
+    promisse.catch(statusError);
 }
 
 function statusOK() {
     console.log("Online");
+}
+
+function statusError(error) {
+    alert("Status code: " + error.response.status + "A página será recarregada!");
+    window.location.reload();
 }
 
 function getMessages() {
@@ -77,14 +83,18 @@ function updateScreen(response) {
                 </li>
             `;
         } else {
-            ul.innerHTML += `
-                <li class="chat private">
-                    <span class="time">${message[i].time}</span> <span class="name">${message[i].from}</span> reservadamente para <span class="name">${message[i].to}</span>:  ${message[i].text}
-                </li>
-            `;
+            if(message[i].to === username || message[i].from === username){ // Condição para carregar apenas as mensagens privadas que o meu usuário enviou ou que foram enviadas para o meu usuário
+                ul.innerHTML += `
+                    <li class="chat private">
+                        <span class="time">${message[i].time}</span> <span class="name">${message[i].from}</span> reservadamente para <span class="name">${message[i].to}</span>:  ${message[i].text}
+                    </li>
+                `;
+            }
         }
         
     }
+    const lastLi = document.querySelector("main ul li:last-child");
+    lastLi.scrollIntoView();
 }
 
 function sendMessage() {
@@ -97,12 +107,13 @@ function sendMessage() {
         type: type
     }
     const promisse = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/uol/messages", request);
+    promisse.then(getMessages);
     promisse.catch(messageSentError);
 }
 
 
-function messageSentError(error) {
-    alert(error.respone.code);
+function messageSentError() {
+    window.location.reload();
 }
 
 function getParticipants() {
@@ -115,22 +126,45 @@ function updateParticipants(response) {
     const participants = response.data;
     
     const ul = document.querySelector("ul.participants");
-    ul.innerHTML = `
-        <li class="selected" onclick="selectProfile(this)">
-            <ion-icon name="people"></ion-icon><span>Todos</span>
-            <ion-icon class="checkmark" name="checkmark-sharp"></ion-icon>
-        </li>
-    `;
-    
-    for (let i = 0; i < participants.length; i++) {
-        ul.innerHTML += `
+    console.log(ul.children);
+
+    if(to !== "Todos"){
+        ul.innerHTML = `
             <li onclick="selectProfile(this)">
-                <ion-icon name="person-circle"></ion-icon><span>${participants[i].name}</span>
+                <ion-icon name="people"></ion-icon><span>Todos</span>
+                <ion-icon class="checkmark" name="checkmark-sharp"></ion-icon>
+            </li>
+        `;    
+    } else {
+        ul.innerHTML = `
+            <li class="selected" onclick="selectProfile(this)">
+                <ion-icon name="people"></ion-icon><span>Todos</span>
                 <ion-icon class="checkmark" name="checkmark-sharp"></ion-icon>
             </li>
         `;
-
     }
+
+    
+    updateTo(participants);
+    console.log(to);
+    for (let i = 0; i < participants.length; i++) {
+        if(participants[i].name === to) {
+            ul.innerHTML += `
+                <li class="selected" onclick="selectProfile(this)">
+                    <ion-icon name="person-circle"></ion-icon><span>${participants[i].name}</span>
+                    <ion-icon class="checkmark" name="checkmark-sharp"></ion-icon>
+                </li>
+            `;
+        } else {
+            ul.innerHTML += `
+                <li onclick="selectProfile(this)">
+                    <ion-icon name="person-circle"></ion-icon><span>${participants[i].name}</span>
+                    <ion-icon class="checkmark" name="checkmark-sharp"></ion-icon>
+                </li>
+            `;
+        }
+    }
+    
 }
 
 function selectProfile(li) {
@@ -138,6 +172,8 @@ function selectProfile(li) {
     previousLi.classList.remove("selected");
     li.classList.add("selected");
     to = li.children[1].innerHTML;
+    
+    
     showLabel();
 }
 
@@ -178,4 +214,12 @@ function updateType() {
         type = "message";
     }
     console.log(type);
+}
+
+function updateTo(participants) {
+    for (let i = 0; i < participants.length; i++) {
+        if(participants[i].name === to) return; // Se achar o participante destinatário, não faz nada
+    }
+    to = "Todos";
+    showLabel();
 }

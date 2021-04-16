@@ -89,6 +89,7 @@ div.login div button {
     min-width: 100px;
     height: 45px;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 div.login div button:focus {
